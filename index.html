@@ -1,0 +1,34 @@
+<html>
+
+<head>
+    <script>
+        var myWindow;
+        function opn_window() {
+            myWindow = window.open("", "", "width=400,height=200");
+        }
+
+        function add_text() {
+            document.getElementById("errMsg").innerHTML = "Massages dispay here";
+            var ent_txt = prompt("Enter your text:", "");
+            if (ent_txt.trim() == "") {
+                document.getElementById("errMsg").innerHTML = "You didn't enter anything";
+            }
+            else if (ent_txt.trim() != "") {
+                myWindow.document.write("<p>" + ent_txt + "</p>") ;
+            }
+        }
+
+    </script>
+</head>
+
+<body>
+    <h1>sdsdsdsd</h1>
+    <ol>
+        <li onclick="opn_window()">Open window</li>
+        <li onclick="add_text()"> Add text</li>
+    </ol>
+    <p id="errMsg" style="color:red">Massages dispay here</p>
+
+</body>
+
+</html>
