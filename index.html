@@ -4,31 +4,45 @@
     <script>
         // globle variable
         var myWindow;
+
         function opn_window() {
             myWindow = window.open("", "", "width=400,height=200");
+            myWindow.document.write("<p>A new window</p>");
+            document.getElementById("errMsg").innerHTML = "A new window is opened";
         }
+
         //this function add text to opened window
         function add_text() {
-            document.getElementById("errMsg").innerHTML = "Massages dispay here";
             var ent_txt = prompt("Enter your text:", "");
-            if (ent_txt.trim() == "") {
-                document.getElementById("errMsg").innerHTML = "You didn't enter anything";
+            if (ent_txt == null || ent_txt.trim() == "") {
+                document.getElementById("errMsg").innerHTML = "No text is entered";
             }
-            else if (ent_txt.trim() != "") {
-                myWindow.document.write("<p>" + ent_txt + "</p>") ;
+            else {
+                myWindow.document.write("<p>" + ent_txt + "</p>");
             }
+        }
+
+        function doc_prop() {
+            var c = document.body.children;
+            myWindow.document.write("<p>Number of Children in the main window: " + c.length + "</p><p>Element Type of element 0: "+c[0]+"</p>");
+        }
+
+        function close_myWindow() {
+            myWindow.close();
+            document.getElementById("errMsg").innerHTML = "The new window is closed";
         }
 
     </script>
 </head>
 
 <body>
-    <h1>sdsdsdsd</h1>
     <ol>
-        <li onclick="opn_window()">Open window</li>
-        <li onclick="add_text()"> Add text</li>
+        <li onclick="opn_window()">Open A window</li>
+        <li onclick="add_text()">Add text to window</li>
+        <li onclick="doc_prop()">Document Properties</li>
+        <li onclick="close_myWindow()">close window</li>
     </ol>
-    <p id="errMsg" style="color:red">Massages dispay here</p>
+    <p id="errMsg" style="color:red">Massages Text</p>
 
 </body>
 
