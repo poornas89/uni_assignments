@@ -13,18 +13,28 @@
 
         //this function add text to opened window
         function add_text() {
-            var ent_txt = prompt("Enter your text:", "");
-            if (ent_txt == null || ent_txt.trim() == "") {
-                document.getElementById("errMsg").innerHTML = "No text is entered";
+            if (typeof (myWindow) == 'undefined' || myWindow.closed) {
+                document.getElementById("errMsg").innerHTML = "Message window is not open";
             }
             else {
-                myWindow.document.write("<p>" + ent_txt + "</p>");
+                var ent_txt = prompt("Enter your text:", "");
+                if (ent_txt == null || ent_txt.trim() == "") {
+                    document.getElementById("errMsg").innerHTML = "No text is entered";
+                }
+                else {
+                    myWindow.document.write("<p>" + ent_txt + "</p>");
+                }
             }
         }
 
         function doc_prop() {
-            var c = document.body.children;
-            myWindow.document.write("<p>Number of Children in the main window: " + c.length + "</p><p>Element Type of element 0: "+c[0]+"</p>");
+            if (typeof (myWindow) == 'undefined' || myWindow.closed) {
+                document.getElementById("errMsg").innerHTML = "Message window is not open";
+            }
+            else {
+                var c = document.body.children;
+                myWindow.document.write("<p>Number of Children in the main window: " + c.length + "</p><p>Element Type of element 0: " + c[0] + "</p>");
+            }
         }
 
         function close_myWindow() {
