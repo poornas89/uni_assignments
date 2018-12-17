@@ -5,13 +5,14 @@
         // globle variable
         var myWindow;
 
+        //Open window function
         function opn_window() {
             myWindow = window.open("", "", "width=400,height=200");
             myWindow.document.write("<p>A new window</p>");
             document.getElementById("errMsg").innerHTML = "A new window is opened";
         }
 
-        //this function add text to opened window
+        //this function adds text to opened window
         function add_text() {
             if (ismyWindowOpen() == false) {
                 return;
@@ -26,6 +27,7 @@
 
         }
 
+        //Display Document properties
         function doc_prop() {
             if (ismyWindowOpen() == false) {
                 return;
@@ -39,11 +41,13 @@
 
         }
 
+        //Close window
         function close_myWindow() {
             myWindow.close();
             document.getElementById("errMsg").innerHTML = "The new window is closed";
         }
 
+        //Check whether the new window is opened     
         function ismyWindowOpen() {
             if (typeof (myWindow) == 'undefined' || myWindow.closed) {
                 document.getElementById("errMsg").innerHTML = "Message window is not open";
